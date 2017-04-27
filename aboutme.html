@@ -1,31 +1,87 @@
 <html>
 	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	 <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<meta name="author" content="Hakkı Akın Büyükbulut">
 	<title>Hakkı Akın BUYUKBULUT &raquo; About me</title>
+	<style>
+	body {
+	padding-top: 50px;
+
+	}	
+	.navbar {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 0;
+      background-color: #2d2d30;
+      border: 0;
+      font-size: 11px !important;
+      letter-spacing: 4px;
+      opacity: 0.7;
+  }
+  .navbar li a, .navbar .navbar-brand { 
+      color: #d5d5d5 !important;
+  }
+  .navbar-nav li a:hover {
+      color: #fff !important;
+	  background-color: #bdbdc9 !important;
+  }
+  .navbar-nav li.active a {
+      color: #fff !important;
+      background-color: #1e1e23 !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+  }
+   h1{
+      margin: 10px 0 -5px 0;
+      letter-spacing: 6px;      
+      font-size: 20px;
+      color: #111;
+  }
+  .bg-1 { 
+      background-color: #2f2f2f;
+      color: #fff;
+  }
+  
+  .bg-2 p{ 
+	  font-style: italic;
+  }
+  .margin {margin-bottom: 45px;}
+  </style>
 	</head>
 <body background="photos/background2.png">
-<header>
-<h1>Home Page of Hakkı Akın BUYUKBULUT.</h1>
-</header>
+
 <hr>
 <center>
-<nav>
-<a href="index.html">Home Page</a> |
-  <a href="aboutme.html">About Me</a> |
-  <a href="photos.html">Photos</a> |
-   <a href="hobby.html">Hobby</a> |
-   <a href="family.html">About My Family</a> |
-  <a href="home.html">My Hometown</a> |
-  <a href="contact.html">Contact</a> |
-  <a href="registration.html">Registration</a> |
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-left">
+		<li><a href="index.html">Home Page</a></li>
+		<li class="active"><a href="aboutme.html">About Me</a></li>
+		<li><a href="photos.html">Photos</a></li>
+		<li><a href="hobby.html">Hobby</a></li>
+		<li><a href="family.html">About My Family</a></li>
+		<li><a href="home.html">My Hometown</a></li>
+		<li><a href="contact.html">Contact</a></li>
+		<li><a href="registration.html">Registration</a></li>
+      </ul>
+    </div>
+  </div>
 </nav>
-<hr>
 </center>
-<h1>Do you wanna know me?</h1>
 <center>
-<h2>Lets break the ice a little!</h2>
-   <p>&nbsp &nbsp Hey everybody,this is Hakkı Akın Büyükbulut. I am 21 years old and living in Eskişehir as a Student at Anadolu University.<br>
+<div class="container-fluid bg-1 text-center">
+  <h3 class="margin">Who Am I?</h3>
+  <img src="photos/1.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="500" height="500">
+  
+</div>
+<h2>Let's break the ice!</h2>
+ <div id="band" class="container text-center bg-2">
+  <p>&nbsp &nbsp Hey everybody,this is Hakkı Akın Büyükbulut. I am 21 years old and living in Eskişehir as a Student at Anadolu University.<br>
  I was born in İstanbul and grew up there until 7. Then me and my family moved to İzmir which city is on the west side of Turkey.<br>
  I started to primary school at İzmir , when i was 15 we moved to Ankara so i studied to high school in this city. After all that <br>
  i got into Anadolu University and moved to Eskişehir on my own.This is my third year at Anadolu University, my department <br>
@@ -33,6 +89,7 @@
  Internet programming and this web site is my workscape. I hope you will learn some useful informations about html while surfing on<br>
  my first web page! Grab your coffee,have a sit, take a deep breath and enjoy! Let the journey begins!
  </p>
+  </div>
  <img src="photos/me.jpg" width="50%" height="70%" alt="mine photo couldn't uploaded">
  </center>
  <hr>

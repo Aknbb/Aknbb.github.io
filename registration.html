@@ -1,35 +1,116 @@
 <html>
 	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="author" content="Hakkı Akın Büyükbulut">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<title>Hakkı Akın BUYUKBULUT &raquo; Registration Form</title>
+	<style>
+	body {
+	padding-top: 50px;
+
+	}	
+	.navbar {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 0;
+      background-color: #2d2d30;
+      border: 0;
+      font-size: 11px !important;
+      letter-spacing: 4px;
+      opacity: 0.7;
+  }
+  .navbar li a, .navbar .navbar-brand { 
+      color: #d5d5d5 !important;
+  }
+  .navbar-nav li a:hover {
+      color: #fff !important;
+	  background-color: #bdbdc9 !important;
+  }
+  .navbar-nav li.active a {
+      color: #fff !important;
+      background-color: #1e1e23 !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+  }
+    .carousel-inner img {
+      width: 80%;
+      margin: auto;
+  }
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+  }
+  .jumbotron h1{
+      margin: -20px 0 30px 0;
+      letter-spacing: 6px;      
+      font-size: -100px;
+      color: #111;
+	  text-align:left;
+  }
+ .jumbotron{
+       background-color: #2f2f2f;
+      color: #fff;
+ }
+	</style>
 	</head>
 <body background="photos/background2.png">
-<header>
-<h1>Home Page of Hakkı Akın BUYUKBULUT.</h1>
-</header>
-<hr>
-<nav>
-<center>
-<a href="index.html">Home Page</a> |
-  <a href="aboutme.html">About Me</a> |
-  <a href="photos.html">Photos</a> |
-   <a href="hobby.html">Hobby</a> |
-   <a href="family.html">About My Family</a> |
-  <a href="home.html">My Hometown</a> |
-  <a href="contact.html">Contact</a> |
-  <a href="registration.html">Registration</a> |
-</nav></center>
-<hr>
-<form method="POST" id=registration>
-<fieldset>
-<legend> Registration Form </legend>
-<label for=email> E-Mail: </label><input type="email" name="email" required> <br> <br>
-<label for=password> Password: </label><input type="password" name="password" required> <br> <br>
-<label for=dateofbirth> Birth Date: </label><input type="date" name="dateofbirth" required>  <br> <br>
-<label for=cities> City: </label>
-<select name="cities">
-    <option value="0">------</option>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-left">
+		<li><a href="index.html">Home Page</a></li>
+		<li><a href="aboutme.html">About Me</a></li>
+		<li><a href="photos.html">Photos</a></li>
+		<li><a href="hobby.html">Hobby</a></li>
+		<li><a href="family.html">About My Family</a></li>
+		<li><a href="home.html">My Hometown</a></li>
+		<li><a href="contact.html">Contact</a></li>
+		<li class="active"><a href="registration.html">Registration</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="jumbotron">
+<h1 style="font-size:3.2em;color:#a2a6ad">Registration Form</h1>
+<form class="form-horizontal" method="post" enctpye="multipart/form-data">
+  <fieldset>
+
+<div class="form-group">
+<label for="inputName" class="col-lg-2 control-label">Name & Surname</label>
+<div class="col-lg-3">
+<input type="text" class="form-control" placeholder="Name & Surname"  id="inputName">
+</div>
+</div>
+
+<div class="form-group">
+<label for="inputEmail" class="col-lg-2 control-label">Email</label>
+<div class="col-lg-3">
+<input type="email" class="form-control" placeholder="Email"  id="inputEmail">
+</div>
+</div>
+
+<div class="form-group">
+<label for="inputPassword" class="col-lg-2 control-label">Password</label>
+<div class="col-lg-3">
+<input type="password" class="form-control" id="inputPassword">
+</div>
+</div>
+
+<div class="form-group">
+<label for="inputDate" class="col-lg-2 control-label">Enter Your Birth Date</label>
+<div class="col-lg-3">
+<input type="date" class="form-control" id="inputDate" value="1996-12-07">
+</div>
+</div>
+
+<div class="form-group">
+<label for="inputCity" class="col-lg-2 control-label">Select Your City</label>
+<div class="col-lg-3">
+<select class="form-control" id="inputCity">
+  <option value="0">------</option>
     <option value="1">Adana</option>
     <option value="2">Adıyaman</option>
     <option value="3">Afyonkarahisar</option>
@@ -112,32 +193,61 @@
     <option value="80">Osmaniye</option>
     <option value="81">Düzce</option>
 </select>
-<br> <br>
-<label for=name> Name&Surname: </label><input type="text" name="name" required> <br> <br>
-<label for=photo> Profile Photo: </label><input type="file" name="photo" > <br> <br>
-<label for=gender> Gender: </label><input type="radio" name="gender" required checked> Male 
-<input type="radio" name="gender" required> Female<br> <br>
-<label for=interests> Interests: </label><input type="checkbox" name="interests"> Sleeping
-<input type="checkbox" name="interests" > Going to Gym
-<input type="checkbox" name="interests" > Travelling
-<input type="checkbox" name="interests" > Studying
-<input type="checkbox" name="interests" > Cooking
-<input type="checkbox" name="interests" > Rally
-<input type="checkbox" name="interests" > Hunting
-<input type="checkbox" name="interests" > Music
-<input type="checkbox" name="interests" > Reading
-<input type="checkbox" name="interests" > Watching Series
-<input type="checkbox" name="interests" > Ice skating
-<input type="checkbox" name="interests" > Bungee Jumping
-<input type="checkbox" name="interests" > Archery
-<br><br>
-<label for=textarea name=textarea> About you: </label>
-<textarea form=contact rows=8 cols=55 placeholder="Write about yourself" ></textarea>
-<br>
-<br>
-<input type=submit value=Submit onclick="return alert('Thanks for registration! Your confirmation mail has been sent to your e-mail address.')"> 
+</div>
+</div>
+
+<div class="form-group">
+<label for="inputText" class="col-lg-2 control-label">About you:</label>
+<div class="col-lg-3">
+<textarea class="form-control" rows="3" placeholder="Write about yourself" id="inputText" ></textarea>
+</div>
+</div>
+
+
+<div class="form-group">
+<label for="inputFile" class="col-lg-2 control-label">Profile Photo</label>
+<div class="col-lg-3">
+<input type="file" class="form-control" id="inputFile">
+</div>
+</div>
+
+<div class="form-group">
+      <label class="col-lg-2 control-label">Gender</label>
+      <div class="col-lg-3">
+        <div class="radio">
+          <label>
+            <input type="radio" name="genderRadio" id="gender1">
+            Male
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="genderRadio" id="gender2">
+            Female
+          </label>
+        </div>
+      </div>
+    </div>
+	
+<div class="form-group">
+<label for="inputText" class="col-lg-2 control-label">Message:</label>
+<div class="col-lg-3">
+<textarea class="form-control" rows="3" placeholder="Your message goes here..." id="inputText" ></textarea>
+</div>
+</div>
+
+<div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary" onclick="alert('Thank you for your registration !')">Submit</button>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
 </form>
-<hr>
+
+</div>
 <center>
 <details>
   <summary>Copyright &copy; 2017 By <a href="https://www.instagram.com/akinbuyukbulut" title="Hakkı Akın Büyükbulut">Hakkı Akın Büyükbulut.</a></summary>
@@ -147,5 +257,6 @@
 </center>
 <div align="right">
  <a href="registration.html"> Back to Top </a> </div>
+ </div>
 </body>
 </html>

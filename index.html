@@ -1,46 +1,108 @@
-<html>
-	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<meta name="author" content="Hakkı Akın Büyükbulut">
 	<title>Hakkı Akın BUYUKBULUT | Personal Web Page</title>
+	<style>
+	body {
+	padding-top: 60px;
+
+	}	
+	.navbar {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 0;
+      background-color: #2d2d30;
+      border: 0;
+      font-size: 11px !important;
+      letter-spacing: 4px;
+      opacity: 0.7;
+  }
+  .navbar li a, .navbar .navbar-brand { 
+      color: #d5d5d5 !important;
+  }
+  .navbar-nav li a:hover {
+      color: #fff !important;
+	  background-color: #bdbdc9 !important;
+  }
+  .navbar-nav li.active a {
+      color: #fff !important;
+      background-color: #1e1e23 !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+  }
+    .carousel-inner img {
+      width: 80%;
+      margin: auto;
+  }
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+  }
+   h1{
+      margin: 10px 0 -5px 0;
+      letter-spacing: 6px;      
+      font-size: 20px;
+      color: #111;
+	  text-align:center;
+  }
+ 
+	</style>
 	</head>
 <body background="photos/background2.png">
 <header>
 <h1>Home Page of Hakkı Akın BUYUKBULUT.</h1>
 </header>
 <hr>
-<center>
-<nav>
-<a href="index.html">Home Page</a> |
-  <a href="aboutme.html">About Me</a> |
-  <a href="photos.html">Photos</a> |
-   <a href="hobby.html">Hobby</a> |
-   <a href="family.html">About My Family</a> |
-  <a href="home.html">My Hometown</a> |
-  <a href="contact.html">Contact</a> |
-  <a href="registration.html">Registration</a> |
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-left">
+		<li class="active"><a href="index.html">Home Page</a></li>
+		<li><a href="aboutme.html">About Me</a></li>
+		<li><a href="photos.html">Photos</a></li>
+		<li><a href="hobby.html">Hobby</a></li>
+		<li><a href="family.html">About My Family</a></li>
+		<li><a href="home.html">My Hometown</a></li>
+		<li><a href="contact.html">Contact</a></li>
+		<li><a href="registration.html">Registration</a></li>
+      </ul>
+    </div>
+  </div>
 </nav>
-<hr>
-   <img src="photos/helloworld.jpg">
-<h2> Social Media </h2>
-<table>
-<tbody>
-<tr>
-<td><figure><a href="https://www.facebook.com/Aknbb" target="_blank">
+<center>
+ <img src="photos/helloworld.jpg">
+ 
+<div id="tour" class="bg-1">
+  <div class="container">
+		<h2> Social Media </h2>
+<div class="row" id=social">
+  <div class="col-md-3"><figure><a href="https://www.facebook.com/Aknbb" target="_blank">
 	<img src="photos/facebookicon2.png">
-</a><figcaption><strong>&nbsp &nbsp &nbsp Facebook</strong></figcaption> </figure> </td>
-<td><figure><a href="https://www.instagram.com/akinbuyukbulut" target="_blank">
+</a><figcaption><strong>Facebook</strong></figcaption> </figure></div>
+  <div class="col-md-3"><figure><a href="https://www.instagram.com/akinbuyukbulut" target="_blank">
 	<img src="photos/instagramicon2.png">
-</a><figcaption><strong>&nbsp &nbsp &nbsp Instagram</strong></figcaption> </figure></td>
-<td><figure><a href="https://www.linkedin.com/in/akinbuyukbulut" target="_blank">
+</a><figcaption><strong>Instagram</strong></figcaption> </figure></div>
+  <div class="col-md-3"><figure><a href="https://www.linkedin.com/in/akinbuyukbulut" target="_blank">
 	<img src="photos/linkedinicon2.png">
-</a><figcaption><strong>&nbsp &nbsp &nbsp Linkedin</strong></figcaption> </figure></td>
-<td><figure><a href="https://www.youtube.com/channel/UC9zTo-SfcB59nQp3lRjjSvg" target="_blank">
+</a><figcaption><strong>Linkedin</strong></figcaption> </figure></div>
+  <div class="col-md-3"><figure><a href="https://www.youtube.com/channel/UC9zTo-SfcB59nQp3lRjjSvg" target="_blank">
 	<img src="photos/youtubeicon2.png">
-</a><figcaption><strong>&nbsp &nbsp &nbsp &nbsp Youtube</strong></figcaption> </figure></td>
-</tr>
-</tbody>
-</table></center><br><br><hr>
+</a><figcaption><strong>Youtube</strong></figcaption> </figure></div>
+</div>
+  </div>
+</div>
+
+ 
+
+</center>
+<br><br><hr>
 <center>
 <details>
   <summary>Copyright &copy; 2017 By <a href="https://www.instagram.com/akinbuyukbulut" title="Hakkı Akın Büyükbulut">Hakkı Akın Büyükbulut.</a></summary>
@@ -50,5 +112,6 @@
 </center>
 <div align="right">
  <a href="index.html"> Back to Top </a> </div>
+ </div>
 </body>
 </html>
