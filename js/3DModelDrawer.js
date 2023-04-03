@@ -311,8 +311,7 @@ https://tympanus.net/codrops/2019/10/14/how-to-create-an-interactive-3d-characte
 				}
 				textAnimationAction.reset().play();
 				setTimeout(function () {
-					window.open('https://drive.google.com/file/d/1bA2PTs19gqXZ-metpnV9LutfgBZ7K-v8/view?usp=sharing', '_blank');
-					currentlyAnimating = true;
+					window.location.href = 'https://drive.google.com/file/d/1bA2PTs19gqXZ-metpnV9LutfgBZ7K-v8/view?usp=sharing';
 				}, 2500);
 			}
 		}
