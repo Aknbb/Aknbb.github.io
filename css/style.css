@@ -1668,14 +1668,14 @@ input[type="text"] {
     display: inline-block;
     margin: 0.15em;
     position: relative;
-    font-size: 1.5em;
+    font-size: 1.8em;
 }
 
 .social-icons i {
     color: #c9bebe;
     position: absolute;
-    top: 18px;
-    left: 20px;
+    top: 17px;
+    left: 17px;
     transition: all 265ms ease-out;
 }
 
