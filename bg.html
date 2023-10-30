@@ -1,48 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <style>
-        #root, html, body {
-            margin: 0;
-            height: 100%;
-        }
-
-        #canvas, #canvas > canvas {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-    </style>
-    <title>WebGL Background</title>
-</head>
-<body>
-<div id="root">
-    <canvas id="canvas"></canvas>
-</div>
-<script src="https://webglfundamentals.org/webgl/resources/webgl-utils.js"></script>
-<script type="x-shader/x-vertex" id="vertex-shader">
-    attribute vec4 a_position;
+<!doctype html><html lang="en"><head><style>#root,body,html{margin:0;height:100%}#canvas,#canvas>canvas{width:100%;height:100%;display:block}</style><title>WebGL Background</title></head><body><div id="root"><canvas id="canvas"></canvas></div><script type="x-shader/x-vertex" id="vertex-shader">attribute vec4 a_position;
     void main() {
         gl_Position = a_position;
-    }
-</script>
-<script type="x-shader/x-fragment" id="fragment-shader">
-    precision highp float;
-
+    }</script><script type="x-shader/x-fragment" id="fragment-shader">precision highp float;
     uniform vec2 iResolution;
     uniform float iTime;
-
     #define NUM_LAYERS 2.
     #define PULSE .005
     #define MAX_PARTICLE_NUMBER 20.
     #define MIN_PARTICLE_NUMBER 1.
-
     float N21(vec2 p) {
         vec3 a = fract(vec3(p.xyx) * vec3(213.897, 653.453, 253.098));
         a += dot(a, a.yzx + 79.76);
         return fract((a.x + a.y) * a.z);
     }
-
     vec2 GetPos(vec2 id, vec2 offs, float t) {
         float n = N21(id+offs);
         float n1 = fract(n*10.);
@@ -50,31 +20,24 @@
         float a = t+n;
         return offs + vec2(sin(a*n1), cos(a*n2))*.4;
     }
-
     float df_line(in vec2 a, in vec2 b, in vec2 p)
     {
         vec2 pa = p - a, ba = b - a;
         float h = clamp(dot(pa, ba) / dot(ba, ba), 0., 1.);
         return length(pa - ba * h);
     }
-
     float line(vec2 a, vec2 b, vec2 uv) {
         float r1 = .04;
         float r2 = .01;
-
         float d = df_line(a, b, uv);
         float d2 = length(a-b);
         float fade = smoothstep(2., 1., d2);
-
         fade += smoothstep(.05, .02, abs(d2-.75));
         return smoothstep(r1, r2, d)*fade;
     }
-
     float NetLayer(vec2 st, float n, float t) {
         vec2 id = floor(st)+n;
-
         st = fract(st)-.5;
-
         vec2 p[9];
         int i=0;
         p[0] = GetPos(id, vec2(-1, -1), t);
@@ -86,68 +49,44 @@
         p[6] = GetPos(id, vec2(-1, 1), t);
         p[7] = GetPos(id, vec2(0, 1), t);
         p[8] = GetPos(id, vec2(1, 1), t);
-
         float m = 0.;
         float sparkle = 0.;
-        // Patlama kısmı
         for (int i=0; i<9; i++) {
             m += line(p[4], p[i], st);
-
             float d = length(st-p[i]);
-
             float s = (.005/(d*d));
             s *= smoothstep(1., .7, d) * PULSE;
             sparkle += s;
         }
-
         m += line(p[1], p[3], st);
         m += line(p[1], p[5], st);
         m += line(p[7], p[5], st);
         m += line(p[7], p[3], st);
-
         float sPhase = (sin(t+n)+sin(t*.05))*.25+.5;
         sPhase += pow(sin(t*.1)*.5+.5, 50.)*5.;
         m += sparkle*sPhase;
-
         return m;
     }
-
     vec2 rotate(vec2 target, float angle) {
         return target * mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
     }
-
     void main() {
         vec2 uv = (gl_FragCoord.xy-iResolution.xy/2.)/iResolution.y;
-
         float time = iTime*.01;
-
         vec2 st = rotate(uv, time);
-
         float m = 0.;
         for (float i=0.; i<1.; i+=1./NUM_LAYERS) {
             float z = fract(time+i);
             float size = mix(MAX_PARTICLE_NUMBER, MIN_PARTICLE_NUMBER, z);
             float fade = smoothstep(0., .6, z);
-
             m += fade * NetLayer(st*size*z*3., i, iTime*.5);
         }
-
         float glow = -uv.y*0.15;
-
-//        float baseColorMultiplier = iTime*0.5;
-//        vec3 baseColor = vec3(sin(baseColorMultiplier*.1), cos(baseColorMultiplier*.1), -sin(baseColorMultiplier*.24))*.4+.6;
         vec3 baseColor = vec3(0.36328125, 0.7421875, 0.90625);
-//        vec3 baseColor = vec3(0.22265625, 0.4765625, 0.5859375);
         vec3 col = baseColor*m;
         col += baseColor*glow;
-
         col *= 1.-dot(uv, uv);
         time = mod(iTime, 230.);
         col *= smoothstep(0., 20., time)*smoothstep(224., 200., time) / 10.;
-
         gl_FragColor = vec4(col, 1);
-    }
-</script>
-<script src="app.js"></script>
-</body>
-</html>
+    }</script><script>const defaultShaderType=["VERTEX_SHADER","FRAGMENT_SHADER"];function main(){const e=document.querySelector("#canvas").getContext("webgl");if(!e)return;const t=document.querySelector("#vertex-shader").innerHTML,n=document.querySelector("#fragment-shader").innerHTML,r=createProgramFromSources(e,[t,n]),o=e.getAttribLocation(r,"a_position"),a=e.getUniformLocation(r,"iResolution"),i=e.getUniformLocation(r,"iTime"),c=e.createBuffer();e.bindBuffer(e.ARRAY_BUFFER,c),e.bufferData(e.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),e.STATIC_DRAW);const s=document.getElementById("root");s.addEventListener("mouseover",h),s.addEventListener("scroll",handleScroll);let u,d=0,l=0;function m(e){const t=s.getBoundingClientRect();d=e.clientX-t.left,l=t.height-(e.clientY-t.top)-1}function h(){u||(u=requestAnimationFrame(g))}s.addEventListener("mousemove",m),s.addEventListener("touchstart",(e=>{e.preventDefault(),h()}),{passive:!1}),s.addEventListener("touchmove",(e=>{e.preventDefault(),m(e.touches[0])}),{passive:!1}),s.addEventListener("touchend",(e=>{e.preventDefault()}),{passive:!1});let f=0;function g(t){u=void 0,t*=3e-4;const n=Math.min(t-f,.1);autoAnimationMode&&(time+=n),f=t,resizeCanvasToDisplaySize(e.canvas),e.viewport(0,0,e.canvas.width,e.canvas.height),e.useProgram(r),e.enableVertexAttribArray(o),e.bindBuffer(e.ARRAY_BUFFER,c),e.vertexAttribPointer(o,2,e.FLOAT,!1,0,0),e.uniform2f(a,e.canvas.width,e.canvas.height),e.uniform1f(i,time),e.drawArrays(e.TRIANGLES,0,6),h()}h()}main();let time=5;const autoAnimationMode=!0;function handleScroll(){time+=.06}function resizeCanvasToDisplaySize(e,t){t=t||1;const n=e.clientWidth*t|0,r=e.clientHeight*t|0;return(e.width!==n||e.height!==r)&&(e.width=n,e.height=r,!0)}function createProgramFromSources(e,t,n,r,o){const a=[];for(let n=0;n<t.length;++n)a.push(loadShader(e,t[n],e[defaultShaderType[n]],o));return createProgram(e,a,n,r,o)}function createProgram(e,t,n,r){const o=e.createProgram();t.forEach((function(t){e.attachShader(o,t)})),n&&n.forEach((function(t,n){e.bindAttribLocation(o,r?r[n]:n,t)})),e.linkProgram(o);if(!e.getProgramParameter(o,e.LINK_STATUS)){const t=e.getProgramInfoLog(o);return console.log("Error in program linking:"+t),e.deleteProgram(o),null}return o}function loadShader(e,t,n){const r=e.createShader(n);e.shaderSource(r,t),e.compileShader(r);if(!e.getShaderParameter(r,e.COMPILE_STATUS)){const n=e.getShaderInfoLog(r);return console.log("*** Error compiling shader '"+r+"':"+n+"\n"+t.split("\n").map(((e,t)=>`${t+1}: ${e}`)).join("\n")),e.deleteShader(r),null}return r}</script></body></html>
